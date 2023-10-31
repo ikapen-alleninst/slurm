@@ -1,3 +1,6 @@
+## Load scrattch.taxonomy
+library(scrattch.mapping)
+
 # Retrieve the input variables from the command line
 args <- commandArgs(trailingOnly = TRUE)
 mapping_file_path <- args[1]
@@ -46,13 +49,10 @@ process_data <- function(mapping_file_path, cluster_var, taxonomy_name, taxonomy
     save(mapping.anno, file=result_dir)
 }
 
-## Load scrattch.taxonomy
-library(scrattch.mapping)
-
 tryCatch({
     process_data(mapping_file_path, cluster_var, taxonomy_name, taxonomy_dir, result_dir)
-    print(paste("SUCCESS MAPPING", item$taxonomy_name))
+    print(paste("SUCCESS MAPPING", taxonomy_name))
 }, error = function(e) {
     print(paste("Error:", conditionMessage(e), "\n"))
-    print(paste("ERROR in", item$taxonomy_name))
+    print(paste("ERROR in", taxonomy_name))
 })
