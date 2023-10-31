@@ -93,8 +93,8 @@ result_dirs=("$result_dir_greatapes_human")
 
 
 ## 
-for ((index=1; index<${#mapping_file_paths[@]}; index++)); do
+for ((index=0; index<${#mapping_file_paths[@]}; index++)); do
     echo $index
-    sbatch /home/inkar.kapen/scripts/R/taxonomy/slurm/map_crossareal.slurm "${mapping_file_paths[index]}" $cluster_name "${taxonomy_names[index]}" "${taxonomy_dirs[index]}" "${result_dirs[index]}"
+    sbatch /home/inkar.kapen/scripts/slurm/map_crossareal.slurm "${mapping_file_paths[index]}" $cluster_name "${taxonomy_names[index]}" "${taxonomy_dirs[index]}" "${result_dirs[index]}"
 done
 wait
